@@ -71,6 +71,7 @@ img { display: block; max-width: 100%; }
 /* ── En-tête ───────────────────────────── */
 .top { color: var(--encre); position: fixed; inset: 0 0 auto; z-index: 50; transition: background .4s, transform .5s cubic-bezier(.2,.8,.2,1), border-color .4s; border-bottom: 1px solid transparent; }
 .top.is-solid { background: color-mix(in srgb, var(--fond) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: var(--encre); }
+.top.no-band, .top.no-band.is-solid { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-color: transparent; }
 .top.is-hidden { transform: translateY(-100%); }
 .top-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
 .logo { display: flex; align-items: baseline; gap: 14px; text-decoration: none; }

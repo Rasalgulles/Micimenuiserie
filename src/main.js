@@ -142,7 +142,10 @@ ScrollTrigger.create({
   onUpdate: (self) => {
     const y = self.scroll()
     const top = $('.top')
-    top.classList.toggle('is-solid', y > 40)
+    // menu sans bandeau : il change seulement de couleur (texte/logo) quand il quitte l'accueil
+    const limit = config.menuBandeau === false ? $('.hero').offsetHeight - top.offsetHeight / 2 : 40
+    top.classList.toggle('is-solid', y > limit)
+    top.classList.toggle('no-band', config.menuBandeau === false)
     top.classList.toggle('is-hidden', y > 400 && y > lastY)
     lastY = y
   },

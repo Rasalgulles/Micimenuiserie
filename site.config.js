@@ -128,6 +128,9 @@ export default {
   // Cercle qui suit la souris (false pour le retirer)
   curseur: false,
 
+  // Bandeau de fond derrière le menu au défilement (false pour le retirer)
+  menuBandeau: false,
+
   // Numéro de téléphone dans le menu (false pour le retirer)
   menuTelephone: false,
 
@@ -137,7 +140,7 @@ export default {
   // Nom en très grand en bas de page (false pour le retirer)
   motGeant: false,
 
-  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 19h12',
+  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 19h14',
 
   typesTravaux: ['Escalier', 'Cuisine', 'Dressing', 'Portes', 'Meubles', 'Parquet / terrasse', 'Autre'],
   delais: ['Dès que possible', 'Dans les 3 mois', 'Je me renseigne'],
