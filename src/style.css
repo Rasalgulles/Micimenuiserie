@@ -82,9 +82,12 @@ img { display: block; max-width: 100%; }
 .logo-name { font-weight: 800; font-size: 26px; font-stretch: 72%; letter-spacing: .04em; }
 .logo-sub { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--muted); }
 .nav { display: flex; align-items: center; gap: 30px; font-weight: 500; font-size: 15px; }
-.nav-link { text-decoration: none; position: relative; padding: 6px 0; }
-.nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; background: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform .4s cubic-bezier(.2,.8,.2,1); }
-.nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-link { text-decoration: none; padding: 8px 0; color: var(--muted); transition: color .3s; }
+.nav-link:hover, .nav-link:focus-visible { color: var(--encre); }
+/* lettres qui s'échangent au survol */
+.swap { display: inline-flex; }
+.swap-l { display: inline-block; height: 1.25em; line-height: 1.25em; overflow: hidden; vertical-align: top; }
+.swap-in { display: flex; flex-direction: column; will-change: transform; }
 .nav-tel { display: inline-block; text-decoration: none; background: var(--encre); color: var(--fond); padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
 
 /* ── Hero 3D ───────────────────────────── */
@@ -302,7 +305,9 @@ img { display: block; max-width: 100%; }
 
 /* ── Téléphone ─────────────────────────── */
 @media (max-width: 860px) {
-  .nav-link { display: none; }
+  .nav { gap: 18px; font-size: 14px; }
+  .nav-link[href="#chantiers"], .nav-link[href="#zone"] { display: none; }
+  .logo-svg { width: 128px; }
   /* Téléphone : le texte, puis l'escalier en dessous (pas de superposition) */
   .hero { height: auto; }
   .hero-sticky { position: relative; height: auto; overflow: visible; display: flex; flex-direction: column; }

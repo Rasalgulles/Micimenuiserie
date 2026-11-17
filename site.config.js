@@ -125,13 +125,16 @@ export default {
   ],
   reponse: { delai: 'On vous répond rapidement.', merci: 'Merci, on vous recontacte très vite.' },
 
+  // Numéro de téléphone dans le menu (false pour le retirer)
+  menuTelephone: false,
+
   // Bandeau orange défilant sous l'accueil (false pour le retirer)
   bandeau: false,
 
   // Nom en très grand en bas de page (false pour le retirer)
   motGeant: false,
 
-  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 19h05',
+  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 19h10',
 
   typesTravaux: ['Escalier', 'Cuisine', 'Dressing', 'Portes', 'Meubles', 'Parquet / terrasse', 'Autre'],
   delais: ['Dès que possible', 'Dans les 3 mois', 'Je me renseigne'],

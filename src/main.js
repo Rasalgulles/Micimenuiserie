@@ -315,6 +315,23 @@ if (finePointer && !reduced) {
   document.addEventListener('pointerenter', () => gsap.to(cur, { opacity: 1, duration: 0.2 }))
 }
 
+// ── Menu : lettres qui s'échangent dans un ordre aléatoire ──
+if (!reduced) {
+  $$('.nav-link').forEach((link) => {
+    const letters = $$('.swap-in', link)
+    const run = (to) => {
+      const order = letters.map((_, i) => i).sort(() => Math.random() - 0.5)
+      order.forEach((idx, k) =>
+        gsap.to(letters[idx], { yPercent: to, duration: 0.6, delay: k * 0.025, ease: 'back.out(1.7)', overwrite: true })
+      )
+    }
+    link.addEventListener('pointerenter', () => run(-50))
+    link.addEventListener('pointerleave', () => run(0))
+    link.addEventListener('focus', () => run(-50))
+    link.addEventListener('blur', () => run(0))
+  })
+}
+
 // ── Boutons magnétiques ──────────────────────────────
 if (finePointer && !reduced) {
   $$('.magnetic').forEach((el) => {

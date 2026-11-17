@@ -16,6 +16,15 @@ const img = (src, alt, extra = '') =>
 // Logo du client (SVG en une couleur, fill="currentColor") : il prend la couleur du texte autour.
 const svgFile = (path) => (path ? readFileSync(new URL('../public' + path, import.meta.url), 'utf8').replace('<svg ', '<svg aria-hidden="true" focusable="false" ') : '')
 
+// Effet « lettres qui s'échangent » (menu) : chaque lettre a une copie cachée juste en dessous
+const swap = (label) =>
+  `<span class="swap" aria-hidden="true">${[...label]
+    .map((ch) => {
+      const t = ch === ' ' ? '&nbsp;' : esc(ch)
+      return `<span class="swap-l"><span class="swap-in"><span>${t}</span><span>${t}</span></span></span>`
+    })
+    .join('')}</span>`
+
 export function renderHead(c) {
   const ld = {
     '@context': 'https://schema.org',
@@ -85,10 +94,10 @@ ${c.maquette ? `<div class="mock-tag">${esc(c.maquette)}</div>` : ''}
       ${c.logo ? `<span class="logo-svg">${svgFile(c.logo.complet)}</span>` : `<span class="logo-name">${nomMaj}</span><span class="logo-sub">${esc(c.metier)} · ${esc(k.ville)}</span>`}
     </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#travaux" class="nav-link">Travaux &amp; prix</a>
-      <a href="#chantiers" class="nav-link">Chantiers</a>
-      <a href="#zone" class="nav-link">Zone</a>
-      <a href="tel:${esc(k.telephoneLien)}" class="nav-tel magnetic">${esc(k.telephone)}</a>
+      ${[['#travaux', 'Travaux & prix'], ['#chantiers', 'Chantiers'], ['#zone', 'Zone'], ['#devis', 'Devis']]
+        .map(([href, label]) => `<a href="${href}" class="nav-link" aria-label="${esc(label)}">${swap(label)}</a>`)
+        .join('')}
+      ${c.menuTelephone === false ? '' : `<a href="tel:${esc(k.telephoneLien)}" class="nav-tel magnetic">${esc(k.telephone)}</a>`}
     </nav>
   </div>
 </header>
