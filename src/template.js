@@ -121,7 +121,7 @@ ${c.maquette ? `<div class="mock-tag">${esc(c.maquette)}</div>` : ''}
         </div>
       </div>
       <ol class="phases" aria-label="Notre façon de travailler">
-        ${c.etapes3d.map((e, i) => `<li class="phase${i === 0 ? ' is-on' : ''}"><span class="phase-n">0${i + 1}</span><span class="phase-t">${esc(e)}</span></li>`).join('')}
+        ${c.etapes3d.map((e, i) => `<li class="phase${i === 0 ? ' is-on' : ''}"><span class="phase-n">${i + 1}</span><span class="phase-t">${esc(e)}</span></li>`).join('')}
         <li class="phase-bar" aria-hidden="true"><span class="phase-bar-fill"></span></li>
       </ol>
       <div class="scroll-hint" aria-hidden="true"><span>Faites défiler</span><span class="scroll-hint-line"></span></div>
@@ -147,9 +147,9 @@ ${c.bandeau === false ? '' : `<div class="band" aria-hidden="true"><div class="m
       .map(
         (p, i) => `
     <a href="#devis" class="service" data-type="${esc(c.typesTravaux[i] || '')}" data-cursor="Devis">
-      <span class="service-n">0${i + 1}</span>
+      <span class="service-n">${i + 1}</span>
       <span class="service-main"><span class="service-title">${esc(p.titre)}</span><span class="service-detail">${esc(p.detail)}</span></span>
-      <span class="service-price">${p.prix ? `<span class="service-from">à partir de</span><span class="service-amount">${esc(p.prix)}<small>${esc(p.unite || '')}</small></span>` : `<span class="service-from">prix</span><span class="service-amount">Sur devis</span>`}</span>
+      <span class="service-price">${p.prix ? `<span class="service-from">à partir de</span><span class="service-amount">${esc(p.prix)}<small>${esc(p.unite || '')}</small></span>` : `<span class="service-amount service-amount-quiet">Sur devis</span>`}</span>
     </a>`
       )
       .join('')}
@@ -160,9 +160,9 @@ ${c.bandeau === false ? '' : `<div class="band" aria-hidden="true"><div class="m
   <div class="wrap plan-in">
     <div class="plan-text">
       <p class="eyebrow eyebrow-light">Du plan à la pose</p>
-      <h2 id="plan-titre" class="h2 split">Chaque pièce est dessinée pour votre maison.</h2>
+      <h2 id="plan-titre" class="h2 split">Chaque pièce est dessinée pour votre maison</h2>
       <ol class="plan-steps">
-        ${(c.etapesPlan || []).map(([t, d], i) => `<li class="plan-step"><span class="plan-n">0${i + 1}</span><span><strong>${esc(t)}</strong> ${esc(d)}</span></li>`).join('')}
+        ${(c.etapesPlan || []).map(([t, d], i) => `<li class="plan-step"><span class="plan-n">${i + 1}</span><span><strong>${esc(t)}</strong> ${esc(d)}</span></li>`).join('')}
       </ol>
     </div>
     <div class="plan-drawing">
@@ -235,7 +235,7 @@ ${c.bandeau === false ? '' : `<div class="band" aria-hidden="true"><div class="m
 <section id="devis" class="quote" aria-labelledby="devis-titre">
   <div class="wrap quote-in">
     <div class="quote-text">
-      <p class="eyebrow eyebrow-light">Devis gratuit</p>
+      <p class="eyebrow eyebrow-light">Demande de devis</p>
       <h2 id="devis-titre" class="h2 split">Parlez-nous de votre projet</h2>
       <p class="quote-note reveal">${esc(c.reponse.delai)} Vous préférez parler ? <a href="tel:${esc(k.telephoneLien)}">${esc(k.telephone)}</a>${k.horaires && k.horaires.length ? ' · ' + esc(k.horaires[0]) : ''}.</p>
     </div>
