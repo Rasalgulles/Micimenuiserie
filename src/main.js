@@ -17,7 +17,7 @@ const loadedAt = Date.now()
 // ── Défilement fluide ────────────────────────────────
 let lenis = null
 if (!reduced) {
-  lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
+  lenis = new Lenis({ duration: 0.9, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
   lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add((t) => lenis.raf(t * 1000))
   lenis.stop()
@@ -296,7 +296,7 @@ if (ba) {
 }
 
 // ── Curseur personnalisé ─────────────────────────────
-if (finePointer && !reduced) {
+if (finePointer && !reduced && config.curseur !== false) {
   document.documentElement.classList.add('has-cursor')
   const cur = $('.cursor')
   const dot = $('.cursor-dot')

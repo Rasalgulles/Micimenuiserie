@@ -91,8 +91,7 @@ img { display: block; max-width: 100%; }
 .nav-tel { display: inline-block; text-decoration: none; background: var(--encre); color: var(--fond); padding: 12px 18px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
 
 /* ── Hero 3D ───────────────────────────── */
-/* l'accueil reste affiché un court instant au défilement, le temps de voir l'escalier se démonter */
-.hero { position: relative; height: 150vh; }
+.hero { position: relative; height: 100vh; height: 100svh; }
 .hero-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 /* L'escalier occupe la moitié droite : jamais sous le texte */
 .stair { position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; height: 100%; display: block; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%); mask-image: linear-gradient(90deg, transparent 0, #000 18%); }
