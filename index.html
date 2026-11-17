@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--HEAD-->
+</head>
+<body class="is-loading">
+<!--BODY-->
+<script type="module" src="/src/main.js"></script>
+<script>
+  // Filet de sécurité : si les animations ne se chargent pas, on retire l'intro quand même.
+  setTimeout(function () {
+    var i = document.querySelector('.intro')
+    if (i && document.body.classList.contains('is-loading')) { i.remove(); document.body.classList.remove('is-loading') }
+  }, 7000)
+</script>
+</body>
+</html>
