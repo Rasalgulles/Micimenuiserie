@@ -131,7 +131,7 @@ export default {
   // Nom en très grand en bas de page (false pour le retirer)
   motGeant: false,
 
-  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 18h46',
+  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 18h58',
 
   typesTravaux: ['Escalier', 'Cuisine', 'Dressing', 'Portes', 'Meubles', 'Parquet / terrasse', 'Autre'],
   delais: ['Dès que possible', 'Dans les 3 mois', 'Je me renseigne'],

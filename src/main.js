@@ -108,7 +108,7 @@ const st = { p: 0 }
 const assemble = (delay = 0) =>
   stairReady.then(() => gsap.to(st, { p: 1, duration: 3.6, delay, ease: 'sine.out', overwrite: true, onUpdate: () => showProgress(st.p) }))
 const disassemble = () =>
-  stairReady.then(() => gsap.to(st, { p: 0, duration: 2, ease: 'power2.inOut', overwrite: true, onUpdate: () => showProgress(st.p) }))
+  stairReady.then(() => gsap.to(st, { p: 0, duration: 1.6, ease: 'power2.out', overwrite: true, onUpdate: () => showProgress(st.p) }))
 function playStair() {
   if (played) return
   played = true
@@ -118,7 +118,7 @@ if (!reduced) {
   const phoneView = matchMedia('(max-width: 860px)').matches
   ScrollTrigger.create({
     trigger: phoneView ? '.stair' : '.hero',
-    start: phoneView ? 'center 35%' : 'top+=40 top',
+    start: phoneView ? 'top 20%' : 'top+=10 top',
     onEnter: () => { below = true; if (played) disassemble() },
     onLeaveBack: () => { below = false; if (played) assemble() },
   })
