@@ -104,7 +104,7 @@ ${c.maquette ? `<div class="mock-tag">${esc(c.maquette)}</div>` : ''}
         <p class="eyebrow hero-eyebrow">${esc(c.accroche)}</p>
         <h1 class="hero-title">${c.titre
           .map((l, i) => `<span class="line"><span class="${i === c.titre.length - 1 ? 'accent' : ''}">${esc(l)}</span></span>`)
-          .join('')}</h1>
+          .join(' ')}</h1>
         <p class="hero-intro">${esc(c.intro)}</p>
         <div class="hero-ctas">
           <a href="#devis" class="btn btn-accent magnetic" data-cursor="Devis">Demander un devis gratuit</a>
