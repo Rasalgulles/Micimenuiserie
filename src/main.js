@@ -100,27 +100,23 @@ const showProgress = (p) => {
   const idx = Math.min(phases.length - 1, Math.floor(p * phases.length * 0.999))
   phases.forEach((ph, i) => ph.classList.toggle('is-on', i === idx))
 }
-// L'escalier se monte à l'arrivée ; dès qu'on défile vers le bas, l'animation se rejoue à l'envers ;
-// quand on revient en haut, il se remonte.
+// L'escalier se monte à l'arrivée, puis reste monté. Au défilement, il tourne doucement sur lui-même.
 let played = false
-let below = false
 const st = { p: 0 }
 const assemble = (delay = 0) =>
   stairReady.then(() => gsap.to(st, { p: 1, duration: 3.6, delay, ease: 'sine.out', overwrite: true, onUpdate: () => showProgress(st.p) }))
-const disassemble = () =>
-  stairReady.then(() => gsap.to(st, { p: 0, duration: 1.6, ease: 'power2.out', overwrite: true, onUpdate: () => showProgress(st.p) }))
 function playStair() {
   if (played) return
   played = true
-  if (!below) assemble(0.8) // petite pause : on voit d'abord les marches en l'air et le plan
+  assemble(0.8) // petite pause : on voit d'abord les marches en l'air et le plan
 }
 if (!reduced) {
   const phoneView = matchMedia('(max-width: 860px)').matches
   ScrollTrigger.create({
     trigger: phoneView ? '.stair' : '.hero',
-    start: phoneView ? 'top 20%' : 'top+=10 top',
-    onEnter: () => { below = true; if (played) disassemble() },
-    onLeaveBack: () => { below = false; if (played) assemble() },
+    start: phoneView ? 'top bottom' : 'top top',
+    end: 'bottom top',
+    onUpdate: (self) => stair && stair.setSpin(self.progress * -0.9), // environ 50° sur toute la traversée
   })
 }
 if (reduced) {

@@ -104,8 +104,13 @@ export function initStair(canvas, colors, { reduced = false } = {}) {
   rim.position.set(5, 3, nu ? -3 : 2)
   scene.add(rim)
 
+  // pivot : fait tourner tout l'escalier sur lui-même (au défilement)
+  const pivot = new THREE.Group()
+  scene.add(pivot)
   const world = new THREE.Group()
-  scene.add(world)
+  pivot.add(world)
+  let spin = 0
+  let spinShown = 0
   const total = (STEPS - 1) * GOING
   world.position.set(-total / 2, 0, 0)
 
@@ -232,6 +237,8 @@ export function initStair(canvas, colors, { reduced = false } = {}) {
     brackets.forEach((b, i) => b.scale.setScalar(easeOut(span(p, 0.74 + i * 0.06, 0.82 + i * 0.06)) || 0.0001))
     key.intensity = 2.1 + span(p, 0.6, 1) * 0.6
     key.color.setHSL(0.08, 0.6 + span(p, 0.6, 1) * 0.3, 0.86)
+    spinShown += (spin - spinShown) * (reduced ? 1 : 0.08)
+    pivot.rotation.y = spinShown
     placeCamera(p, t)
   }
 
@@ -283,6 +290,10 @@ export function initStair(canvas, colors, { reduced = false } = {}) {
   start()
 
   return {
+    // rotation de l'escalier sur lui-même, en radians
+    setSpin(v) {
+      spin = v
+    },
     setProgress(p) {
       progress = clamp01(p)
       if (reduced) { update(0); renderer.render(scene, camera) }
