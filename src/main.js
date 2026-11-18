@@ -66,7 +66,7 @@ function heroIn(delay = 0) {
     .from('.hero-eyebrow', { opacity: 0, y: 14, duration: 0.7 }, 0.15)
     .from(['.hero-intro', '.hero-ctas'], { opacity: 0, y: 24, duration: 0.9, stagger: 0.1, ease: 'power3.out' }, 0.4)
     .from(['.phases', '.scroll-hint'], { opacity: 0, duration: 0.8 }, 0.7)
-    .from(canvas, { opacity: 0, duration: 1.2, ease: 'power2.out' }, 0)
+    .from(canvas, { opacity: 0, scale: 1.06, duration: 1.6, ease: 'power2.out' }, 0)
   return tl
 }
 
@@ -179,25 +179,27 @@ if (!reduced && $('.mq')) {
 if (!reduced) {
   $$('.split').forEach((h) =>
     gsap.from($$('.line > span', h), {
-      yPercent: 100, duration: 0.7, stagger: 0.04, ease: 'power2.out',
+      yPercent: 110, duration: 1, stagger: 0.06, ease: 'power4.out',
       scrollTrigger: { trigger: h, start: 'top 88%' },
     })
   )
   ScrollTrigger.batch('.reveal', {
     start: 'top 90%',
-    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 0.6, stagger: 0.06, ease: 'power2.out' }),
+    onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: 0.08, ease: 'power3.out' }),
   })
   gsap.from('.service', {
-    y: 16, opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power2.out',
+    x: -80, opacity: 0, duration: 1, stagger: 0.08, ease: 'power3.out',
     scrollTrigger: { trigger: '.services', start: 'top 82%' },
   })
   gsap.from('.town', {
-    y: 16, opacity: 0, duration: 0.6, stagger: 0.04, ease: 'power2.out',
+    yPercent: 60, opacity: 0, duration: 0.8, stagger: 0.05, ease: 'power3.out',
     scrollTrigger: { trigger: '.towns', start: 'top 88%' },
   })
   if ($('.radar')) gsap.from('.radar', { scale: 0.6, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.radar', start: 'top 85%' } })
   if ($('.foot-word')) gsap.from('.foot-word', { yPercent: 70, duration: 1.4, ease: 'power4.out', scrollTrigger: { trigger: '.foot', start: 'top 85%' } })
-
+  $$('.work-media').forEach((m) =>
+    gsap.fromTo(m.firstElementChild, { yPercent: -8, scale: 1.15 }, { yPercent: 8, ease: 'none', scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: true } })
+  )
 } else {
   $$('.reveal').forEach((el) => (el.style.opacity = 1))
 }
@@ -216,7 +218,7 @@ if (map) {
   if (reduced) {
     dests.forEach((g) => ($('.flow', g).style.strokeDashoffset = 0))
   } else {
-    gsap.from('.map-land', { opacity: 0, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: map, start: 'top 85%' } })
+    gsap.from('.map-land', { opacity: 0, scale: 0.94, transformOrigin: '50% 50%', duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: map, start: 'top 85%' } })
     gsap.from(['.dest-pt', '.dest-label'], { opacity: 0, duration: 0.5, stagger: 0.04, scrollTrigger: { trigger: map, start: 'top 80%' } })
     const fire = (g) => {
       const path = $('.flow', g)
@@ -292,7 +294,7 @@ if (ba) {
   if (!reduced) {
     const o = { v: 82 }
     set(o.v)
-    gsap.to(o, { v: 50, duration: 1.6, ease: 'power2.out', onUpdate: () => { set(o.v); range.value = o.v }, scrollTrigger: { trigger: ba, start: 'top 70%' } })
+    gsap.to(o, { v: 50, duration: 1.6, ease: 'elastic.out(1, 0.5)', onUpdate: () => { set(o.v); range.value = o.v }, scrollTrigger: { trigger: ba, start: 'top 70%' } })
   }
 }
 
@@ -330,6 +332,20 @@ if (!reduced) {
     link.addEventListener('pointerleave', () => run(0))
     link.addEventListener('focus', () => run(-50))
     link.addEventListener('blur', () => run(0))
+  })
+}
+
+// ── Boutons magnétiques ──────────────────────────────
+if (finePointer && !reduced) {
+  $$('.magnetic').forEach((el) => {
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.4)' })
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.4)' })
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect()
+      xTo((e.clientX - r.left - r.width / 2) * 0.3)
+      yTo((e.clientY - r.top - r.height / 2) * 0.4)
+    })
+    el.addEventListener('pointerleave', () => { xTo(0); yTo(0) })
   })
 }
 

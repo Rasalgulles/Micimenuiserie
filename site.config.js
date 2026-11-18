@@ -7,10 +7,10 @@ export default {
   // Logo vectorisé (une couleur) : il se colore automatiquement selon le fond
   logo: { complet: '/logos/mici-logo.svg', symbole: '/logos/mici-symbole.svg' },
   accroche: 'Menuisier à Beyne-Heusay',
-  titre: ['Escaliers, cuisines', 'et dressings', 'sur mesure'],
+  titre: ['Escaliers,', 'cuisines et', 'dressings', 'sur mesure.'],
   intro:
-    'Escaliers, cuisines, dressings, portes et meubles en bois, dessinés et posés sur mesure depuis notre atelier de Beyne-Heusay.',
-  etapes3d: ['Mesuré', 'Fabriqué', 'Posé'],
+    'Escaliers, cuisines, dressings, portes et meubles en bois, dessinés et posés sur mesure. Un travail soigné jusque dans les finitions.',
+  etapes3d: ['Mesuré.', 'Fabriqué.', 'Posé.'],
 
   seo: {
     title: 'Mici Menuiserie — Menuisier à Beyne-Heusay | Escaliers, cuisines, dressings',
@@ -19,39 +19,38 @@ export default {
     url: 'https://www.micimenuiserie.be',
   },
 
-  // Atelier : noirs tirés vers le brun chaud, moutarde réservée au bouton principal, à l'escalier et aux lignes de cote
+  // Mode sombre : noir, gris et jaune moutarde
   couleurs: {
-    fond: '#161513',        // fond de page
-    encre: '#EFE9DE',       // texte principal
+    fond: '#121212',        // fond de page (noir)
+    encre: '#ECEBE7',       // texte (blanc cassé)
     accent: '#D9A72B',      // jaune moutarde
-    accentTexte: '#E2B43F',
+    accentTexte: '#E2B43F', // moutarde pour les petits textes sur fond noir
     accentClair: '#EFC765',
-    surAccent: '#1F1B16',   // texte posé sur la moutarde
-    texteDoux: '#AAA398',   // texte secondaire
-    texteMoyen: '#CFC8BB',
-    trait: '#2E2B27',       // filets
-    panneau: '#12110F',     // section « Où on intervient »
-    photoVide: '#262421',
-    surSombre: '#AAA398',
-    sombre: '#1C1A18',      // sections plan technique et devis, intro
-    clair: '#EFE9DE',
-    champ: '#262421',       // champs du formulaire
+    surAccent: '#141414',   // texte posé sur la moutarde (boutons)
+    texteDoux: '#A3A29D',
+    texteMoyen: '#C9C8C3',
+    trait: '#3A3A37',
+    panneau: '#1A1A19',     // section « Où on intervient »
+    photoVide: '#2A2A28',
+    surSombre: '#B9B8B3',
+    sombre: '#1E1E1D',      // sections plan technique et devis, intro
+    clair: '#F2F1EC',
+    champ: '#2A2A28',       // champs du formulaire
     bois: '#B98451',
     scene: 'nu',            // scène 3D sans mur ni sol : l'escalier flotte sur le fond
     // Accueil en thème clair (le reste du site reste sombre)
     accueil: {
-      fond: '#F7F4EE',        // papier chaud
-      encre: '#1F1B16',
-      accentTexte: '#8A6510', // moutarde foncée (ligne de cote, petits textes)
-      accentTitre: 'inherit', // le titre reste en noir
-      texteDoux: '#5E554A',
-      texteMoyen: '#3D362E',
-      trait: '#DDD6CA',
-      ombres: true,
-      accent: '#D9A72B',
-      surAccent: '#1F1B16',
-      metal: '#1F1B16',
-      ligne3d: '#A87D0C',
+      fond: '#EDEDEB',
+      encre: '#141414',
+      accentTexte: '#8A6510', // moutarde foncée : lisible sur le fond clair (titre, petits textes)
+      accentTitre: '#A87D0C', // « SUR MESURE. » : moutarde plus vive, lisible en grand
+      texteDoux: '#5C5C5A',
+      texteMoyen: '#3B3B3A',
+      trait: '#B4B3AF',
+      ombres: true,           // ombres douces sous l'escalier 3D
+      accent: '#D9A72B',      // boutons
+      metal: '#1A1A19',       // main courante
+      ligne3d: '#A87D0C',     // plan de l'escalier 3D (moutarde foncée, visible sur le clair)
     },
     metal: '#4A4A47',       // main courante en acier (gris graphite pour ressortir sur le noir)
   },
@@ -70,8 +69,9 @@ export default {
   },
 
   promesses: [
-    'Chaque pièce dessinée pour votre maison',
-    'Portes intérieures et coupe-feu',
+    'Tout est fait sur mesure',
+    'Finitions de qualité',
+    'Portes coupe-feu',
     'Partout en Belgique',
   ],
 
@@ -121,7 +121,7 @@ export default {
     ['Vous décrivez le projet.', 'Par le formulaire ou par téléphone, avec quelques photos.'],
     ['On passe mesurer.', 'Un rendez-vous chez vous, sans engagement.'],
     ['Devis détaillé.', 'Poste par poste, avec le délai de fabrication.'],
-    ['Fabrication et pose.', 'Chez vous, au rendez-vous convenu dans le devis.'],
+    ['Fabrication et pose.', 'Avec des finitions soignées.'],
   ],
   reponse: { delai: 'On vous répond rapidement.', merci: 'Merci, on vous recontacte très vite.' },
 
@@ -140,7 +140,7 @@ export default {
   // Nom en très grand en bas de page (false pour le retirer)
   motGeant: false,
 
-  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 21h45 (unslop)',
+  maquette: 'Maquette Charabia · proposition pour Mici Menuiserie · version du 17/11 19h14',
 
   typesTravaux: ['Escalier', 'Cuisine', 'Dressing', 'Portes', 'Meubles', 'Parquet / terrasse', 'Autre'],
   delais: ['Dès que possible', 'Dans les 3 mois', 'Je me renseigne'],
